@@ -1,0 +1,41 @@
+{
+  "name": "editrrr",
+  "version": "0.1.0",
+  "description": "Pimping textarea with editor features.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iamso/editrrr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamso/editrrr/issues"
+  },
+  "author": {
+    "name": "Steve Ottoz",
+    "email": "so@dev.so"
+  },
+  "main": "dist/editrrr.next.js",
+  "keywords": [
+    "textarea",
+    "editor"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
+    "babel-plugin-transform-function-bind": "^6.8.0",
+    "babel-preset-babili": "0.0.3",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-banner": "^0.1.3",
+    "gulp-bump": "^2.4.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-strip-comments": "^2.4.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7"
+  }
+}

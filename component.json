@@ -1,0 +1,17 @@
+{
+  "name": "editrrr",
+  "repository": "iamso/editrrr",
+  "description": "Pimping textarea with editor features.",
+  "version": "0.1.0",
+  "keywords": [
+    "textarea",
+    "editor"
+  ],
+  "scripts": [
+    "dist/editrrr.js",
+    "dist/editrrr.min.js",
+    "dist/editrrr.next.js",
+    "dist/editrrr.next.min.js"
+  ],
+  "license": "MIT"
+}
