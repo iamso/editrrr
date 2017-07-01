@@ -1,5 +1,5 @@
 /*!
- * editrrr - version 0.1.0
+ * editrrr - version 0.1.1
  *
  * Made with ❤ by Steve Ottoz so@dev.so
  *
@@ -171,14 +171,14 @@
     }, {
       key: 'getLineNr',
       value: function getLineNr() {
-        var pos = arguments.length <= 0 || arguments[0] === undefined ? this.getCursor() : arguments[0];
+        var pos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getCursor();
 
         return this.value.substring(0, pos).split('\n').length;
       }
     }, {
       key: 'getLine',
       value: function getLine() {
-        var pos = arguments.length <= 0 || arguments[0] === undefined ? this.getCursor() : arguments[0];
+        var pos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getCursor();
 
         return this.value.substring(0, pos).split('\n').pop();
       }
@@ -195,7 +195,7 @@
     }, {
       key: 'setCursor',
       value: function setCursor(start) {
-        var end = arguments.length <= 1 || arguments[1] === undefined ? start : arguments[1];
+        var end = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : start;
 
         this.textarea.focus();
         this.textarea.setSelectionRange(start, end);
@@ -855,8 +855,8 @@
     }, {
       key: 'lineUp',
       value: function lineUp() {
-        var lines = arguments.length <= 0 || arguments[0] === undefined ? this.getLines() : arguments[0];
-        var index = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
+        var lines = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getLines();
+        var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
         if (index > 0) {
           var curLine = lines[index];
@@ -869,8 +869,8 @@
     }, {
       key: 'lineDown',
       value: function lineDown() {
-        var lines = arguments.length <= 0 || arguments[0] === undefined ? this.getLines() : arguments[0];
-        var index = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
+        var lines = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getLines();
+        var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
         if (index < lines.length - 1) {
           var curLine = lines[index];
@@ -882,22 +882,12 @@
       }
     }, {
       key: 'prefix',
-      value: function (_prefix) {
-        function prefix(_x, _x2, _x3, _x4) {
-          return _prefix.apply(this, arguments);
-        }
-
-        prefix.toString = function () {
-          return _prefix.toString();
-        };
-
-        return prefix;
-      }(function (a, b, c, d) {
-        for (d ? d = b.toUpperCase() : b = 4; !d && b--; d = (d = d.replace(/-(.)/g, prefix)) in new Image().style && d) {
+      value: function prefix(a, b, c, d) {
+        for (d ? d = b.toUpperCase() : b = 4; !d && b--; d = (d = d.replace(/-(.)/g, this.prefix)) in new Image().style && d) {
           d = [['Moz-', 'Webkit-', 'Ms-', 'O-'][b]] + a;
         }
         return d || a;
-      })
+      }
     }, {
       key: 'init',
       value: function init() {

@@ -1,5 +1,5 @@
 /*!
- * editrrr - version 0.1.0
+ * editrrr - version 0.1.1
  *
  * Made with ❤ by Steve Ottoz so@dev.so
  *
@@ -297,24 +297,24 @@ export default class Editrrr {
             }
           }
           indent = lines.join('\n');
-          this.value = `${ this.value.substring(0, selection.start) }${ indent }${ this.value.substring(selection.end) }`;
+          this.value = `${this.value.substring(0, selection.start)}${indent}${this.value.substring(selection.end)}`;
           this.setCursor(selection.start, selection.start + indent.length);
         } else {
           for (let i in lines) {
             lines[i] = this.tab + lines[i];
           }
           indent = lines.join('\n');
-          this.value = `${ this.value.substring(0, selection.start) }${ indent }${ this.value.substring(selection.end) }`;
+          this.value = `${this.value.substring(0, selection.start)}${indent}${this.value.substring(selection.end)}`;
           this.setCursor(selection.start, selection.start + indent.length);
         }
       } else {
         const left = this.value.substring(0, pos);
         const right = this.value.substring(pos);
-        let edited = `${ left }${ this.tab }${ right }`;
+        let edited = `${left}${this.tab}${right}`;
 
         if (e.shiftKey) {
           if (this.value.substring(pos - this.tab.length, pos) === this.tab) {
-            this.value = `${ this.value.substring(0, pos - this.tab.length) }${ right }`;
+            this.value = `${this.value.substring(0, pos - this.tab.length)}${right}`;
             this.setCursor(pos - this.tab.length);
           }
         } else {
@@ -363,7 +363,7 @@ export default class Editrrr {
         }
       }
 
-      this.value = `${ left }${ this.newLine }${ indent }${ closing }${ indent.substring(0, indent.length - this.tab.length) }${ right }`;
+      this.value = `${left}${this.newLine}${indent}${closing}${indent.substring(0, indent.length - this.tab.length)}${right}`;
       this.setCursor(pos + final);
       this.callHook('enter:after');
     }
@@ -394,7 +394,7 @@ export default class Editrrr {
           lines[nr] = '';
           edited = lines.join('\n');
         } else {
-          edited = `${ left }${ match[0] }${ right }`;
+          edited = `${left}${match[0]}${right}`;
           pos += match[0].length;
         }
         this.value = edited;
@@ -424,16 +424,16 @@ export default class Editrrr {
       if (this.getSelection() === false) {
         for (let key of keyMap) {
           if (key.open === leftChar && key.close === rightChar) {
-            this.value = `${ this.value.substring(0, pos - 1) }${ this.value.substring(pos + 1) }`;
+            this.value = `${this.value.substring(0, pos - 1)}${this.value.substring(pos + 1)}`;
             this.setCursor(pos - 1);
             return;
           }
         }
-        this.value = `${ this.value.substring(0, pos - 1) }${ this.value.substring(pos) }`;
+        this.value = `${this.value.substring(0, pos - 1)}${this.value.substring(pos)}`;
         this.setCursor(pos - 1);
       } else {
         const selection = this.getSelection();
-        this.value = `${ this.value.substring(0, selection.start) }${ this.value.substring(selection.end) }`;
+        this.value = `${this.value.substring(0, selection.start)}${this.value.substring(selection.end)}`;
         this.setCursor(pos);
       }
 
@@ -575,7 +575,7 @@ export default class Editrrr {
     const left = this.value.substring(0, pos);
     const right = this.value.substring(pos);
 
-    this.value = `${ left }${ char.open }${ char.close }${ right }`;
+    this.value = `${left}${char.open}${char.close}${right}`;
     this.setCursor(pos + 1);
 
     this.callHook('openChar:after');
@@ -755,7 +755,7 @@ export default class Editrrr {
    * @return {String}            prefixed css property
    */
   prefix(a, b, c, d) {
-    for (d ? d = b.toUpperCase() : b = 4; !d && b--; d = (d = d.replace(/-(.)/g, prefix)) in new Image().style && d) {
+    for (d ? d = b.toUpperCase() : b = 4; !d && b--; d = (d = d.replace(/-(.)/g, this.prefix)) in new Image().style && d) {
       d = [['Moz-', 'Webkit-', 'Ms-', 'O-'][b]] + a;
     }
     return d || a;
