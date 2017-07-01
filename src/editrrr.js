@@ -766,7 +766,7 @@ export default class Editrrr {
   prefix(a, b, c, d) {
     for (d
       ? d = b.toUpperCase()
-      : b = 4; !d && b--; d = (d = d.replace(/-(.)/g, prefix)) in(new Image).style && d) {
+      : b = 4; !d && b--; d = (d = d.replace(/-(.)/g, this.prefix)) in(new Image).style && d) {
       d = [
         ['Moz-', 'Webkit-', 'Ms-', 'O-'][b]
       ] + a;
