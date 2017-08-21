@@ -1,5 +1,5 @@
 /*!
- * editrrr - version 0.1.1
+ * editrrr - version 0.1.2
  *
  * Made with ❤ by Steve Ottoz so@dev.so
  *
@@ -171,14 +171,14 @@
     }, {
       key: 'getLineNr',
       value: function getLineNr() {
-        var pos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getCursor();
+        var pos = arguments.length <= 0 || arguments[0] === undefined ? this.getCursor() : arguments[0];
 
         return this.value.substring(0, pos).split('\n').length;
       }
     }, {
       key: 'getLine',
       value: function getLine() {
-        var pos = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getCursor();
+        var pos = arguments.length <= 0 || arguments[0] === undefined ? this.getCursor() : arguments[0];
 
         return this.value.substring(0, pos).split('\n').pop();
       }
@@ -195,7 +195,7 @@
     }, {
       key: 'setCursor',
       value: function setCursor(start) {
-        var end = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : start;
+        var end = arguments.length <= 1 || arguments[1] === undefined ? start : arguments[1];
 
         this.textarea.focus();
         this.textarea.setSelectionRange(start, end);
@@ -855,8 +855,8 @@
     }, {
       key: 'lineUp',
       value: function lineUp() {
-        var lines = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getLines();
-        var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        var lines = arguments.length <= 0 || arguments[0] === undefined ? this.getLines() : arguments[0];
+        var index = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
         if (index > 0) {
           var curLine = lines[index];
@@ -869,8 +869,8 @@
     }, {
       key: 'lineDown',
       value: function lineDown() {
-        var lines = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getLines();
-        var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        var lines = arguments.length <= 0 || arguments[0] === undefined ? this.getLines() : arguments[0];
+        var index = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
         if (index < lines.length - 1) {
           var curLine = lines[index];
