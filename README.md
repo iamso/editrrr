@@ -28,14 +28,6 @@ Editrrr is a lightweight library for adding IDE style behaviors to plain text ar
 Install
 -------
 
-### With Bower
-
-```bash
-bower install editrrr
-```
-
-### With NPM
-
 ```bash
 npm install editrrr
 ```
