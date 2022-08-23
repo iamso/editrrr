@@ -525,7 +525,7 @@ export default class Editrrr {
    * @return {undefined}
    */
   duplicateLine(e) {
-    if (e.shiftKey && ((this.isMac && e.metaKey) || (this.isWin && e.ctrlKey)) && e.key === 'd') {
+    if (e.shiftKey && e.altKey && ['ArrowUp','ArrowDown'].includes(e.key)) {
       e.preventDefault();
 
       const selection = this.getSelection();
@@ -561,7 +561,9 @@ export default class Editrrr {
 
         lines.splice(line + 1, 0 , lines[line]);
 
-        newPos = curPos + lines[line].length + 1; // +1 for the missing newline
+        if (e.key === 'ArrowDown') {
+          newPos = curPos + lines[line].length + 1; // +1 for the missing newline
+        }
 
         this.value = lines.join('\n');
         this.setCursor(newPos);
