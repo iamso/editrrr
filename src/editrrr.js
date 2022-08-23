@@ -455,7 +455,7 @@ export default class Editrrr {
    * @return {undefined}
    */
   moveLine(e) {
-    if (e.ctrlKey && ((this.isMac && e.metaKey) || (this.isWin && e.shiftKey)) && ['ArrowUp','ArrowDown'].indexOf(e.key) >= 0) {
+    if (!e.shiftKey && e.altKey && ['ArrowUp','ArrowDown'].includes(e.key)) {
       e.preventDefault();
 
       const selection = this.getSelection();
