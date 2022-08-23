@@ -73,19 +73,20 @@ const editrrr = new Editrrr({
 - `autoStrip`: If set to true, and your cursor is between two paired characters, pressing backspace will delete both instead of just the first
 - `autoIndent`: If set to true, automatic indentation of your code will be attempted. Best used with `autoOpen` set to true
 - `continueList`: If set to true, Markdown lists (and GFM style task lists) are continued when pressing enter
-- `moveLine`: If set to true, lines can be moved up and down using `cmd+ctrl+up/down` (`shift+ctrl+up/down` on Windows)
-- `duplicateLine`: If set to true, lines can be duplicated using `cmd+shift+d` (`shift+ctrl+d` on Windows)
+- `moveLine`: If set to true, lines can be moved up and down using `alt+up/down`
+- `duplicateLine`: If set to true, lines can be duplicated using `shift+alt+up/down`
 
 #### Methods
 
 ```javascript
-editrrr.getLineNr(pos); // get the line number
+editrrr.getLineNr(pos); // get the line number (0 based)
 editrrr.getLine(pos); // get the line
+editrrr.getLineCursor(pos); // get the cursor position on the line
 editrrr.getLines(); // get all lines
 editrrr.getCursor(); // get the cursor position
 editrrr.setCursor(start, end); // set the cursor position
 editrrr.getSelection(); // get the selection
-editrrr.levelsDeep(); // get the levels of indetation
+editrrr.levelsDeep(pos); // get the levels of indetation
 editrrr.addEvent(name, fn); // add event listener
 editrrr.removeEvent(name, fn); // remove event listener
 editrrr.focus(); // focus the textarea
