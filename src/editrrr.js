@@ -268,7 +268,7 @@ export default class Editrrr {
    */
   tabKey(e) {
     let ret;
-    if (e.keyCode === 9) {
+    if (e.key === 'Tab') {
       e.preventDefault();
 
       this.callHook('tab:before');
@@ -339,7 +339,7 @@ export default class Editrrr {
    * @return {undefined}
    */
   enterKey(e) {
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
       e.preventDefault();
       this.callHook('enter:before');
 
@@ -381,7 +381,7 @@ export default class Editrrr {
    * @return {undefined}
    */
   enterKeyList(e) {
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
       e.preventDefault();
       this.callHook('enter:before');
 
@@ -418,7 +418,7 @@ export default class Editrrr {
    * @return {undefined}
    */
   deleteKey(e) {
-    if (e.keyCode === 8 && !e.altKey) {
+    if (e.key === 'Backspace' && !e.altKey) {
       e.preventDefault();
       this.callHook('delete:before');
 
@@ -455,7 +455,7 @@ export default class Editrrr {
    * @return {undefined}
    */
   moveLine(e) {
-    if (e.ctrlKey && ((this.isMac && e.metaKey) || (this.isWin && e.shiftKey)) && [38,40].indexOf(e.keyCode) >= 0) {
+    if (e.ctrlKey && ((this.isMac && e.metaKey) || (this.isWin && e.shiftKey)) && ['ArrowUp','ArrowDown'].indexOf(e.key) >= 0) {
       e.preventDefault();
 
       const selection = this.getSelection();
@@ -467,7 +467,7 @@ export default class Editrrr {
         let selectionStart;
         let selectionEnd;
 
-        if (e.keyCode === 38) { // up
+        if (e.key === 'ArrowUp') { // up
           if (start > 0) {
             for (let i = start; i <= end; i++) {
               lines = this.lineUp(lines, i);
@@ -476,7 +476,7 @@ export default class Editrrr {
             end--;
           }
         }
-        else if (e.keyCode === 40) { // down
+        else if (e.key === 'ArrowDown') { // down
           if (end < lines.length - 1) {
             for (let i = end; i >= start; i--) {
               lines = this.lineDown(lines, i);
@@ -501,13 +501,13 @@ export default class Editrrr {
         const curPos = this.getCursor();
         let newPos = curPos;
 
-        if (e.keyCode === 38) { // up
+        if (e.key === 'ArrowUp') { // up
           if (line > 0) {
             lines = this.lineUp(lines, line);
             newPos = curPos - lines[line].length - 1; // -1 for the missing newline
           }
         }
-        else if (e.keyCode === 40) { // down
+        else if (e.key === 'ArrowDown') { // down
           if (line < lines.length - 1) {
             lines = this.lineDown(lines, line);
             newPos = curPos + lines[line].length + 1; // +1 for the missing newline
@@ -525,7 +525,7 @@ export default class Editrrr {
    * @return {undefined}
    */
   duplicateLine(e) {
-    if (e.shiftKey && ((this.isMac && e.metaKey) || (this.isWin && e.ctrlKey)) && e.keyCode === 68) {
+    if (e.shiftKey && ((this.isMac && e.metaKey) || (this.isWin && e.ctrlKey)) && e.key === 'd') {
       e.preventDefault();
 
       const selection = this.getSelection();
