@@ -235,10 +235,10 @@ export default class Editrrr {
 
   /**
    * Method to get the level of indetation
-   * @return {Number} - level
+   * @param  {Number} [pos] - cursor position
+   * @return {Number}       - level
    */
-  levelsDeep() {
-    const pos = this.getCursor();
+  levelsDeep(pos = this.getCursor()) {
     const left = this.value.substring(0, pos);
     const quoteMap = ['\'', '"'];
     let levels = 0;
