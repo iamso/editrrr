@@ -1,6 +1,6 @@
 {
   "name": "editrrr",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Pimping textarea with editor features.",
   "main": "dist/editrrr.cjs.js",
   "module": "dist/editrrr.esm.js",
