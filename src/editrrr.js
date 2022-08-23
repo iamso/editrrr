@@ -133,7 +133,7 @@ export default class Editrrr {
    * @return {Number}       - line number
    */
   getLineNr(pos = this.getCursor()) {
-    return ((this.value.substring(0, pos)).split('\n')).length;
+    return Math.max(((this.value.substring(0, pos)).split('\n')).length - 1, 0);
   }
 
   /**
@@ -462,8 +462,8 @@ export default class Editrrr {
       let lines = this.getLines();
 
       if (selection) {
-        let start = this.getLineNr(selection.start) - 1;
-        let end = this.getLineNr(selection.end) - 1;
+        let start = this.getLineNr(selection.start);
+        let end = this.getLineNr(selection.end);
         let selectionStart;
         let selectionEnd;
 
@@ -497,7 +497,7 @@ export default class Editrrr {
         this.setCursor(selectionStart, selectionEnd);
       }
       else {
-        const line = this.getLineNr() - 1;
+        const line = this.getLineNr();
         const curPos = this.getCursor();
         let newPos = curPos;
 
@@ -532,8 +532,8 @@ export default class Editrrr {
       let lines = this.getLines();
 
       if (selection) {
-        let start = this.getLineNr(selection.start) - 1;
-        let end = this.getLineNr(selection.end) - 1;
+        let start = this.getLineNr(selection.start);
+        let end = this.getLineNr(selection.end);
         let length = end - start + 1;
         let index = end;
         let selectionStart;
@@ -555,7 +555,7 @@ export default class Editrrr {
         this.setCursor(selectionStart, selectionEnd);
       }
       else {
-        const line = this.getLineNr() - 1;
+        const line = this.getLineNr();
         const curPos = this.getCursor();
         let newPos = curPos;
 
