@@ -354,12 +354,22 @@ export default class Editrrr {
       e.preventDefault();
       this.callHook('enter:before');
 
-      const pos = this.getCursor();
+      let pos = this.getCursor();
+      if ((this.isMac && e.metaKey) || (this.isWin && e.ctrlKey)) {
+        const line = this.getLine();
+        const linePos = this.getLineCursor();
+        pos += line.length - linePos;
+
+        if (e.shiftKey) {
+          pos -= line.length + 1;
+        }
+      }
+
       const left = this.value.substring(0, pos);
       const right = this.value.substring(pos);
       const leftChar = left.charAt(left.length - 1);
       const rightChar = right.charAt(0);
-      let tabs = this.levelsDeep();
+      let tabs = this.levelsDeep(pos);
       let indent = '';
       let closing = '';
       let final;
