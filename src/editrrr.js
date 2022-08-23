@@ -137,12 +137,23 @@ export default class Editrrr {
   }
 
   /**
-   * Method to a line
+   * Method to get a line
    * @param  {Number} [pos] - cursor position
    * @return {String}       - line text
    */
   getLine(pos = this.getCursor()) {
-    return ((this.value.substring(0, pos)).split('\n')).pop();
+    const lines = this.getLines();
+    const lineNr = this.getLineNr(pos);
+    return lines[lineNr];
+  }
+
+  /**
+   * Method to get the cursor position on a line
+   * @param  {Number} [pos] - cursor position
+   * @return {Number}       - line cursor position
+   */
+  getLineCursor(pos = this.getCursor()) {
+    return ((this.value.substring(0, pos)).split('\n')).pop().length;
   }
 
   /**
